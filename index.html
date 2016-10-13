@@ -1,0 +1,42 @@
+<!doctype html>
+<meta charset="utf-8">
+<script>
+function makeRubyString(base, ruby, left, right) {
+  return '<ruby>' + base +
+         (left && right ? '<rp>' + left + '</rp>' : '') +
+         '<rt>' + ruby + '</rt>' +
+         (left && right ? '<rp>' + right + '</rp>' : '') +
+         '</ruby>';
+}
+
+function process() {
+  const base = document.getElementById('base').value;
+  const ruby = document.getElementById('ruby').value;
+  const left = document.getElementById('left').value;
+  const right = document.getElementById('right').value;
+  const result = makeRubyString(base, ruby, left, right);
+
+  document.getElementById('code-out').innerText = result;
+  document.getElementById('out').innerHTML = result;
+}
+</script>
+
+<h2>Base text</h2>
+<input oninput="process()" placeholder="学生" type="text" id="base">
+
+<h2>Ruby text (annotation)</h2>
+<input oninput="process()" placeholder="がくせい" type="text" id="ruby">
+
+<h2>Optional: parentheses</h2>
+<input oninput="process()" placeholder="[" type="text" id="left">
+<input oninput="process()" placeholder="]" type="text" id="right">
+
+<h2>Result</h2>
+
+<div>
+<code id="code-out"></code>
+</div>
+
+<p id="out"></div>
+
+<p><strong>About</strong> Use <a href="https://twitter.com/kosamari/status/743473313184419845">and abuse</a> Ruby tags—they should be supported <a href="http://caniuse.com/#feat=ruby">everywhere</a>. <a href="http://www.w3schools.com/tags/tag_ruby.asp">W3schools</a>.  <a href="http://html5doctor.com/ruby-rt-rp-element/">HTML5 Doctor</a>.</p>
